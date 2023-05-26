@@ -1,0 +1,286 @@
+/*--------------- start of basic css------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgba(40,40,40,1);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+#cards {
+    position: relative;
+    min-width: 150px;
+    min-height: 240px;
+}
+
+.big-card {
+    position: absolute;
+    width: 150px;
+    height: 240px;
+    border-radius: 5px;
+    transition: all .4s;
+    object-fit: cover;
+    box-shadow: 3px 3px 5px rgba(0,0,0,1);
+}
+
+.sm-card {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    transition: all .4s;
+    object-fit: cover;
+    box-shadow: 0px 5px 5px rgba(0,0,0,1);
+}
+/*--------------- end of basic css------------------*/
+
+
+/*--------------- start of single cards movement on hover ------------------*/
+#cards:hover .big-card:nth-child(1), .big-card:hover .big-card:nth-child(1) {
+    transform: translate(65px, -10px) rotate(15deg);
+}
+#cards:hover .big-card:nth-child(3), .big-card:hover .big-card:nth-child(3) {
+    transform: translate(-65px, -10px) rotate(-15deg);
+}
+#cards:hover .big-card:nth-child(5), .big-card:hover .big-card:nth-child(5) {
+    transform: translate(200px, 33px) rotate(23deg);
+}
+#cards:hover .big-card:nth-child(7), .big-card:hover .big-card:nth-child(7) {
+    transform: translate(-200px, 33px) rotate(-23deg);
+}
+
+#cards:hover .sm-card:nth-child(2) {
+    transform: translate(190px, -55px) rotate(20deg);
+}
+#cards:hover .sm-card:nth-child(4) {
+    transform: translate(-40px, 200px) rotate(-15deg);
+}
+#cards:hover .sm-card:nth-child(6) {
+    transform: translate(105px, 200px) rotate(15deg);
+}
+#cards:hover .sm-card:nth-child(8) {
+    transform: translate(-150px, -55px) rotate(-23deg);
+}
+/*--------------- end of single cards movement on hover ------------------*/
+
+/*--------------- start of buttons------------------*/
+#btns {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.x {
+    color: red;
+}
+
+.heart { 
+    color: blue; 
+}
+
+button {
+    outline: none;
+    border: 1px solid #ddd;
+    font-size: 28px;
+    width: 55px;
+    height: 55px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: transparent;
+}
+
+button:hover {
+    border: 2px solid #ddd;
+}
+/*--------------- end of buttons ------------------*/
+
+/*--------------- start of dynamic classes for the cards-groups ------------------*/
+.card-group {
+    transition: all .4s;
+}
+
+.card-active-before {
+    animation: before-to-active .4s ease-in-out forwards;
+
+}
+
+.card-active-after {
+    animation: after-to-active .4s ease-in-out forwards;
+}
+
+.card-inactive {
+    transform:scale(0);
+}
+
+.card-inactive-after {
+    animation: active-to-after .4s ease-in-out forwards;
+}
+
+.card-inactive-before {
+    animation: active-to-before .4s ease-in-out forwards;
+}
+/*--------------- end of dynamic classes for the cards-groups ------------------*/
+
+/*--------------- start of animations ------------------*/
+@keyframes after-to-active {
+    0% {
+        transform: translate(170px, 200px) scale(0);
+    }
+    100% {
+        transform: translate(0,0) scale(1);
+    }
+}
+
+@keyframes before-to-active {
+    0% {
+        transform: translate(-170px, 200px) scale(0);
+    }
+    100% {
+        transform: translate(0,0) scale(1);
+    }
+}
+
+@keyframes active-to-after {
+    0% {
+        transform: translate(0,0) scale(1);
+    }
+    100% {
+        transform: translate(170px, 200px) scale(0);
+
+    }
+}
+
+@keyframes active-to-before {
+    0% {
+        transform: translate(0,0) scale(1);
+    }
+    100% {
+        transform: translate(-170px, 200px) scale(0);
+
+    }
+}
+/*--------------- end of animations ------------------*/
+
+
+/*--------------- start of mock bg ------------------*/
+.card-group:nth-child(1) .sm-card:nth-child(2) {
+    background-image: url('https://unsplash.it/100/100?image=1');
+    z-index: 2;
+}
+.card-group:nth-child(1) .sm-card:nth-child(4) {
+    background-image: url('https://unsplash.it/100/100?image=20');
+    z-index: 4;
+}
+.card-group:nth-child(1) .sm-card:nth-child(6) {
+    background-image: url('https://unsplash.it/100/100?image=30');
+    z-index: 6;
+}
+.card-group:nth-child(1) .sm-card:nth-child(8) {
+    background-image: url('https://unsplash.it/100/100?image=40');
+    z-index: 3;
+}
+.card-group:nth-child(1) .big-card:nth-child(1) {
+    background-image: url('https://unsplash.it/150/240?image=15');
+    z-index: 1;
+}
+.card-group:nth-child(1) .big-card:nth-child(3) {
+    background-image: url('https://unsplash.it/150/240?image=25');
+    z-index: 3;
+}
+.card-group:nth-child(1) .big-card:nth-child(5) {
+    background-image: url('https://unsplash.it/150/240?image=35');
+    z-index: 5;
+}
+.card-group:nth-child(1) .big-card:nth-child(7) {
+    background-image: url('https://unsplash.it/150/240?image=45');
+    z-index: 7;
+}
+
+
+
+
+
+.card-group:nth-child(2) .sm-card:nth-child(2) {
+    background-image: url('https://unsplash.it/100/100?image=3');
+    z-index: 2;
+}
+.card-group:nth-child(2) .sm-card:nth-child(4) {
+    background-image: url('https://unsplash.it/100/100?image=18');
+    z-index: 4;
+}
+.card-group:nth-child(2) .sm-card:nth-child(6) {
+    background-image: url('https://unsplash.it/100/100?image=22');
+    z-index: 6;
+}
+.card-group:nth-child(2) .sm-card:nth-child(8) {
+    background-image: url('https://unsplash.it/100/100?image=56');
+    z-index: 3;
+}
+.card-group:nth-child(2) .big-card:nth-child(1) {
+    background-image: url('https://unsplash.it/150/240?image=13');
+    z-index: 1;
+}
+.card-group:nth-child(2) .big-card:nth-child(3) {
+    background-image: url('https://unsplash.it/150/240?image=27');
+    z-index: 3;
+}
+.card-group:nth-child(2) .big-card:nth-child(5) {
+    background-image: url('https://unsplash.it/150/240?image=39');
+    z-index: 5;
+}
+.card-group:nth-child(2) .big-card:nth-child(7) {
+    background-image: url('https://unsplash.it/150/240?image=41');
+    z-index: 7;
+}
+
+
+
+
+
+.card-group:nth-child(3) .sm-card:nth-child(2) {
+    background-image: url('https://unsplash.it/100/100?image=6');
+    z-index: 2;
+}
+.card-group:nth-child(3) .sm-card:nth-child(4) {
+    background-image: url('https://unsplash.it/100/100?image=19');
+    z-index: 4;
+}
+.card-group:nth-child(3) .sm-card:nth-child(6) {
+    background-image: url('https://unsplash.it/100/100?image=26');
+    z-index: 6;
+}
+.card-group:nth-child(3) .sm-card:nth-child(8) {
+    background-image: url('https://unsplash.it/100/100?image=59');
+    z-index: 3;
+}
+.card-group:nth-child(3) .big-card:nth-child(1) {
+    background-image: url('https://unsplash.it/150/240?image=16');
+    z-index: 1;
+}
+.card-group:nth-child(3) .big-card:nth-child(3) {
+    background-image: url('https://unsplash.it/150/240?image=21');
+    z-index: 3;
+}
+.card-group:nth-child(3) .big-card:nth-child(5) {
+    background-image: url('https://unsplash.it/150/240?image=36');
+    z-index: 5;
+}
+.card-group:nth-child(3) .big-card:nth-child(7) {
+    background-image: url('https://unsplash.it/150/240?image=43');
+    z-index: 7;
+}
+/*--------------- end of mock bg ------------------*/
